@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { QuizDataService } from './../quiz-data.service';
+import { Component, OnInit } from '@angular/core';
 
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router'
 
@@ -9,5 +10,11 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router'
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent {
-    
+    constructor(private QuizDataService:QuizDataService){}
+
+    ngOnInit(): void {
+      this.QuizDataService.getData().subscribe((data) => {
+        console.log(data)
+      })
+    }
 }
