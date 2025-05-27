@@ -10,11 +10,21 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router'
   styleUrl: './home-page.component.scss'
 })
 export class HomePageComponent {
-    constructor(private QuizDataService:QuizDataService){}
+  constructor(private QuizDataService:QuizDataService){}
 
-    ngOnInit(): void {
-      this.QuizDataService.getData().subscribe((data) => {
-        console.log(data)
-      })
-    }
+  quizData: any;
+  convertData: any;
+  resultData: any ={}
+
+ 
+  ngOnInit(): void {
+    this.QuizDataService.getData().subscribe((data) => {
+      //console.log(data)
+      this.quizData = data
+      console.log("Dados da requisição",this.quizData.record)
+      this.resultData = this.quizData.record[0]
+      console.log("Resultado final : ",this.resultData.quizData)
+    })
+  }
+  
 }
