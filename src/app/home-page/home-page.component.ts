@@ -21,9 +21,9 @@ export class HomePageComponent {
     this.QuizDataService.getData().subscribe((data) => {
       //console.log(data)
       this.quizData = data
-      console.log("Dados da requisição",this.quizData.record)
+      //console.log("Dados da requisição",this.quizData.record)
       this.resultData = this.quizData.record[0]
-      console.log("Resultado final : ",this.resultData.quizData)
+      console.log("Resultado final : ",this.resultData)
     })
   }
   
