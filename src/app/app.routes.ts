@@ -16,7 +16,7 @@ export const routes: Routes = [
     {path: 'creat-quiz', component: CreatQuizPageComponent},
     {path: 'qr-code-generator', component: QrCodeGeneratorComponent},
     {path: 'quiz-game', component: QuizGameComponent},
-    {path: 'quiz-page', component:QuizPageComponent},
+    {path: 'quiz-page/:id', component:QuizPageComponent},
     {path: 'finished-game', component: FinishedGameComponent},
     {path: '', redirectTo: 'home-page', pathMatch: "full"},
     {path: '**', component: NotFoundComponent}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-page',
@@ -7,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrl: './quiz-page.component.scss'
 })
 export class QuizPageComponent {
+  id: number | null = null;
 
+  constructor(private route: ActivatedRoute){}
+
+  ngOnInit(){
+    this.route.params.subscribe(params => {
+      this.id = params['id']
+    })
+  }
 }
