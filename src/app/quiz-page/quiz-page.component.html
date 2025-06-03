@@ -1,1 +1,43 @@
-<p>quiz-page works!</p>
+<nav class="navbar navbar-light column " style="background-color: white;">
+    <a class="navbar p-2 " routerLink="" routerLinkActive="active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16" style="color: #412E8B">
+            <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5M10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5"/>
+        </svg>
+    </a>
+
+</nav>
+
+<div class="container-fluid d-flex justify-content-center text-wrap text-uppercase fs-3 fw-semibold " style=" color: #412E8B;">
+    <p class="text-center">{{resultData[id]?.title}}</p> 
+</div>  
+
+<div class="p-3">
+    <div  class="container-fluid border border-dark d-flex justify-content-center " style="background-color: #D9D9D9;">
+        <img src={{resultData[id]?.imageUrl}}>
+    </div>
+
+    <div class="pt-3 fs-4">
+        <p>{{resultData[id]?.description}}</p>
+    </div>
+
+    <div class="pt-3, p-3 row">
+        <p>Criado por: </p>
+        <div class="col col-lg-1 d-flex align-items-center border" style="width: 4%;">
+            <svg class="rounded-circle" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" style="color: white; background-color: #412E8B; border-radius: 50% ">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+            </svg>
+        </div>
+        <div class="col col-lg-1 fs-5 d-flex align-items-start border" >
+            <p class="col">{{resultData[id]?.user}}</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid d-flex justify-content-center p-3 mx-3 align-middle" style="background-color: #412E8B; color: white;">
+    <p>botao</p>
+</div>
+
+
+<router-outlet></router-outlet>
