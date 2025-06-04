@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +13,7 @@ export class QuizDataService {
 
   constructor(private http: HttpClient) { }
 
+  //busca dados da api
   getData(){
     const url = `${this.apiUrl}`;
     return this.http.get(url, {'headers': this.headers})
