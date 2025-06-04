@@ -22,6 +22,7 @@ export class QuizPageComponent {
       this.id = parseInt(params['id'])
     }),
 
+    //trata dados vinda da api
     this.QuizDataService.getData().subscribe((data) => {
       this.quizData = data
       this.resultData = this.quizData.record

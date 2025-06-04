@@ -1,5 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { Routes } from '@angular/router';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -15,15 +14,10 @@ export const routes: Routes = [
     {path: 'profile', component: ProfileComponent},
     {path: 'creat-quiz', component: CreatQuizPageComponent},
     {path: 'qr-code-generator', component: QrCodeGeneratorComponent},
-    {path: 'quiz-game', component: QuizGameComponent},
+    {path: 'quiz-game/:id', component: QuizGameComponent},
     {path: 'quiz-page/:id', component:QuizPageComponent},
     {path: 'finished-game', component: FinishedGameComponent},
     {path: '', redirectTo: 'home-page', pathMatch: "full"},
     {path: '**', component: NotFoundComponent}
 ];
 
-/*@NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-})
-*/

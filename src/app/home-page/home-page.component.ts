@@ -15,7 +15,7 @@ export class HomePageComponent {
   quizData: any;
   resultData: any = {}
 
- 
+  //trata conteudo da api que vem do service
   ngOnInit(): void {
     this.QuizDataService.getData().subscribe((data) => {
       this.quizData = data
