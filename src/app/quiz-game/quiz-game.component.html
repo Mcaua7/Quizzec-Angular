@@ -1,1 +1,24 @@
-<p>quiz-game works!</p>
+<nav class="navbar navbar-light column d-flex flex-row-reverse" style="background-color: #412E8B;">
+    <a class="navbar p-2" routerLink="" routerLinkActive="active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16" style="color: white">
+            <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8m-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5"/>
+          </svg>
+    </a>
+    <p class="ms-2 fs-3 text-uppercase fw-semibold" style="color: white;">{{resultData[id]?.title}}</p>
+</nav>
+
+<div class="container  border border-dark mx-auto p-4 mt-3" style="background-color:#412E8B;" >
+    <div class="ps-2 pt-2 pe-2" *ngFor="let item of quizGame | keyvalue; let i = index" style="background-color: white;">
+        <div class="border d-flex justify-content-start ps-2 mb-2">
+            <p class="fs-4 " style="color: #412E8B;">{{quizGame[i]?.title}}</p>
+        </div>
+        <div class="d-flex justify-content-center">
+            <img src={{quizGame[i]?.questImgUrl}}>
+        </div>
+        <div class="m-2 border ps-2 pt-2 fs-5" style="background-color: #412E8B; color: white;" *ngFor="let item of quizGame[i]?.answers | keyvalue; let n = index;">
+            <p>{{quizGame[i]?.answers[n]?.title}}</p>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

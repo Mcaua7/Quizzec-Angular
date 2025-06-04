@@ -26,7 +26,6 @@ export class QuizPageComponent {
     this.QuizDataService.getData().subscribe((data) => {
       this.quizData = data
       this.resultData = this.quizData.record
-      console.log(this.resultData)
     })
   }
 
