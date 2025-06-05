@@ -15,9 +15,26 @@ export class QuizGameComponent {
   quizData: any;
   resultData: any = {};
   quizGame: any = [{}];
+  listAnswer: number = 0;
+  acertou: boolean = false
 
   constructor(private route: ActivatedRoute, private QuizDataService: QuizDataService){
     this.id = 0
+  }
+
+  AnswerVerify(n:any, i:any){
+    //console.log("Clicado!", n)
+    //console.log(this.quizGame[i]?.answers[4].correctIndex)
+    if(n == this.quizGame[i]?.answers[4]?.correctIndex){
+      console.log("acertou!")
+      this.acertou = true
+    }else{
+      console.log("Errou!")
+      this.acertou = false
+    }
+
+    console.log(this.acertou)
+
   }
 
   ngOnInit(): void{
@@ -35,4 +52,6 @@ export class QuizGameComponent {
       console.log("Quz data", this.quizGame)
     })
   }
+  
+  
 }
