@@ -15,9 +15,30 @@
         <div class="d-flex justify-content-center">
             <img class="img-fluid" src={{quizGame[i]?.questImgUrl}}>
         </div>
-        <div *ngFor="let item of quizGame[i]?.answers | keyvalue; let n = index;">
-            <div (click)="AnswerVerify(n, i)" class="m-2 border ps-2 pt-2 fs-5" style="background-color: #412E8B; color: white;" *ngIf="n<4">
-                <p>{{quizGame[i]?.answers[n]?.title}}</p>
+        <div *ngIf="!questionClicked.includes(i)">
+            <div *ngFor="let item of quizGame[i]?.answers | keyvalue; let n = index;">
+                <div 
+                    (click)="hadleClick(i)" 
+                    (click)="AnswerVerify(n, i)" 
+                    class="m-2 border ps-2 pt-2 fs-5" 
+                    style="background-color: #412E8B; color: white;" *ngIf="n<4" >
+                    <p>{{quizGame[i]?.answers[n]?.title}}</p>
+            </div>
+            </div>
+        </div>
+        <div *ngIf="questionClicked.includes(i)">
+            <div *ngIf="acertou[i] == 1">
+                <div class="m-2 border ps-2 pt-2 fs-5" style="background-color: green; color: white;">
+                    <p>{{quizGame[i]?.answers[questionAnswer[i]]?.title}}</p>
+                </div>
+            </div>
+            <div *ngIf="acertou[i] == 0 ">
+                <div class="m-2 border ps-2 pt-2 fs-5" style="background-color: green; color: white;">
+                    <p>{{quizGame[i]?.answers[correctIndex[i]]?.title}}</p>
+                </div>
+                <div class="m-2 border ps-2 pt-2 fs-5" style="background-color: red; color: white;">
+                    <p>{{quizGame[i]?.answers[questionAnswer[i]]?.title}}</p>
+                </div>
             </div>
         </div>
     </div>
