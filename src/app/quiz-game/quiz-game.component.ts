@@ -25,55 +25,62 @@ export class QuizGameComponent {
   constructor(private route: ActivatedRoute, private QuizDataService: QuizDataService){
     this.id = 0
   }
-
+  
+  //faz a verifição se a resposta dada foi correta
   AnswerVerify(n:any, i:any){
-    //console.log("Clicado!", n)
-    //console.log(this.quizGame[i]?.answers[4].correctIndex)
-    if(n == this.quizGame[i]?.answers[4]?.correctIndex){
-      console.log("acertou!", this.acertou)
-      this.acertou.splice(i, 0, 1)
-    }else{
-      console.log("Errou!", this.acertou)
-      this.acertou.splice(i, 0, 0)
 
+    if(n == this.quizGame[i]?.answers[4]?.correctIndex){
+      //se tiver certa, modifica na lista 'acertou' colocando (1) na posição da questão;
+      this.acertou.splice(i, 1, 1)
+      console.log("acertou!", this.acertou)
+    }else{
+      //senão modifica para (0) na posiçao da questão;
+      this.acertou.splice(i, 1, 0)
+      console.log("Errou!", this.acertou)
+
+      //no caso de erro, há uma subtração dos pontos
       this.pontos = this.pontos - (1000/this.quizGame.length)
     }
-
-    //console.log("pontos ", this.pontos)
-
-    this.correctIndex.splice(i, 0, this.quizGame[i]?.answers[4]?.correctIndex) 
-    //console.log("Correct index list", this.correctIndex)
-
+    
+    //recebe o index da resposta para exibir certo (background-green), errado (background-red);
     this.questionAnswer.splice(i, 0, n)
-    //console.log(this.questionAnswer)
   }
 
+  //Função para adicionar em uma lista;; 
+  //serve para modificar a forma que aparece o bolco de resposta;
   hadleClick( i: any ){
-    //console.log("questao ", i, "Clicado")
-
-    if(this.questionClicked.includes(i)){
-      console.log("Ja foi clicado!")
-    }else{
+    if(!this.questionClicked.includes(i)){
       this.questionClicked.splice(i, 0, i)
+      console.log("questoes clicadas ",this.questionClicked)
     }
-
-    //console.log("questao clicada ",this.questionClicked)
   }
 
   ngOnInit(): void{
+    //Recebe o id para saber em qual quiz vai ser joogado;
     this.route.params.subscribe(params => {
       this.id = parseInt(params['id'])
-      //console.log('id: ' , this.id)
     }),
 
-    //trata dados vinda da api
+    //trata dados vinda da api;
     this.QuizDataService.getData().subscribe((data) => {
       this.quizData = data
       this.resultData = this.quizData.record
       this.quizGame = this.quizData.record[this.id].quizData
-      //console.log("Result Data",this.resultData)
-      //console.log("Quz data", this.quizGame)
+
     })
+
+    for(let i = 0; i<this.quizGame.length; i++){
+      //adiciona um nuero neutro (2) para manter a estrutura da lsitagem de questão;
+      this.acertou.push(2)
+
+      //adiciona um numero neutro para atualizar corretamente quando for respondido;
+      this.questionAnswer.push(0)
+
+      //Atribui o index correto vindo do json para a lista correctIndex;
+      this.correctIndex.push(this.quizGame[i]?.answers[4]?.correctIndex)
+      console.log("index correto das questoes: ", this.correctIndex)
+    }
+
   }
   
   
