@@ -21,6 +21,7 @@ export class QuizGameComponent {
   questionAnswer: number[] = [];
   correctIndex: number[] = [];
   pontos: number = 1000;
+  indexAnswer: number = 4;
 
   constructor(private route: ActivatedRoute, private QuizDataService: QuizDataService){
     this.id = 0
@@ -41,6 +42,7 @@ export class QuizGameComponent {
       //no caso de erro, há uma subtração dos pontos
       this.pontos = this.pontos - (1000/this.quizGame.length)
     }
+    console.log("quantidade de pontos: ", this.pontos)
     
     //recebe o index da resposta para exibir certo (background-green), errado (background-red);
     this.questionAnswer.splice(i, 0, n)
@@ -77,8 +79,7 @@ export class QuizGameComponent {
       this.questionAnswer.push(0)
 
       //Atribui o index correto vindo do json para a lista correctIndex;
-      this.correctIndex.push(this.quizGame[i]?.answers[4]?.correctIndex)
-      console.log("index correto das questoes: ", this.correctIndex)
+      this.correctIndex.push(this.quizGame[i]?.answers?.[4]?.correctIndex)
     }
 
   }
